@@ -8,7 +8,11 @@ inNode2 = InputNode(memFunc=MemFunc([1,2,3,4]).memFunc, inData=3)
 
 #n1 = Node(Ops().getFunc("union"),[inNode,inNode2])
 
-dTree = Tree(Ops().getFunc("intersect"),[inNode,inNode2])
+dTree = Tree(Ops().getFunc("intersect"),[inNode,inNode2],[inNode,inNode2])
+
+print(dTree.run())
+
+dTree.changeInputs([2,3])
 
 print(dTree.run())
 
