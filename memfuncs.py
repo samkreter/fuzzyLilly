@@ -2,7 +2,7 @@ import numpy as np
 
 
 
-class memFunc():
+class MemFunc():
     """docstring for memFunc"""
 
     def __init__(self, specs=[]):

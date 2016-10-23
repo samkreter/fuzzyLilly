@@ -1,8 +1,8 @@
 class Tree():
     """docstring for DecisionTree"""
-    def __init__(self):
-        self.root = Node()
-        self.bottom = []
+    def __init__(self,operator,params):
+        self.root = Node(operator,params)
+        self.bottom = [self.root]
 
     def run(self):
         return self.root.run()

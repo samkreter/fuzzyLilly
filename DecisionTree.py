@@ -1,4 +1,6 @@
-class DecisionTree():
-    """docstring for Desicion"""
-    def __init__(self, structure):
+from tree import Tree
+from operators import Ops
+from memfuncs import MemFunc
+
+dTree = Tree(Ops.getFunc("compliment"),[])
 

@@ -1,5 +1,5 @@
 
-class Operators():
+class Ops():
 
     def printStuff(self):
         print(dir(self))
