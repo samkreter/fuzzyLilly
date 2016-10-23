@@ -37,10 +37,7 @@ class Node():
     def run(self):
         items = []
         for param in self.params:
-            if isinstance(param,Node) or isinstance(param,InputNode):
-                items.append(param.run())
-            else:
-                items.append(param)
+            items.append(param.run())
 
         return self.operator(*items)
 
