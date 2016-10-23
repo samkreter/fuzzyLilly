@@ -10,7 +10,7 @@ class Ops():
     def compliment(self, x):
         return 1 - x
 
-    def intersection(self, x, y):
+    def intersect(self, x, y):
         return min(x,y)
 
     def union(self, x, y):

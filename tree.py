@@ -1,14 +1,31 @@
 class Tree():
     """docstring for DecisionTree"""
-    def __init__(self,operator,params):
+    def __init__(self,operator,params,inputs=[]):
         self.root = Node(operator,params)
-        self.bottom = [self.root]
+        self.inputs = inputs
+
+    def changeInputs(self,params):
+        for inp,num in zip(self.inputs,params):
+            inp.inData = num
 
     def run(self):
         return self.root.run()
 
 
-class Node(object):
+class InputNode():
+    # check if the reference will hold
+    def __init__(self,memFunc,inData):
+        self.memFunc = memFunc
+        self.inData = inData
+
+    def setInput(self, inData):
+        self.inData = inData
+
+    def run(self):
+        return self.memFunc(self.inData)
+
+
+class Node():
     """docstring for Node"""
     def __init__(self, operator, params = []):
         self.operator = operator
@@ -20,7 +37,7 @@ class Node(object):
     def run(self):
         items = []
         for param in self.params:
-            if isinstance(param,Node):
+            if isinstance(param,Node) or isinstance(param,InputNode):
                 items.append(param.run())
             else:
                 items.append(param)
