@@ -1,0 +1,60 @@
+{
+    "type":"Node",
+    "op":"intersect",
+    "params":[
+        {
+            "type":"Node",
+            "op":"intersect",
+            "params":[{
+                "name":"HighwayMPG-Good",
+                "type":"Input",
+                "memFunc":[30,40,60,60],
+                "input":1
+            },
+            {
+                "name":"Horsepower-Average",
+                "type":"Input",
+                "memFunc":[60,100,140],
+                "input":1
+            },
+            {
+                "type":"Node",
+                "op":"compliment",
+                "params":[{
+                    "name":"CityMPG-Poor",
+                    "type": "Input",
+                    "memFunc":[0,0,20,30],
+                    "input": 1
+                }]
+            }]
+        },
+        {
+            "type":"Node",
+            "op":"union",
+            "params":[{
+                "name":"Price-cheap",
+                "type":"Input",
+                "memFunc":[0,0,7000,10000],
+                "input":1
+            },
+            {
+                "type":"Node",
+                "op":"intersect",
+                "params":[
+                {
+                    "name":"Risk-Low",
+                    "type":"Input",
+                    "memFunc":[-3,-3,-2,0],
+                    "input":1
+                },
+                {
+                    "name":"ValueLoss-Low",
+                    "type": "Input",
+                    "memFunc":[0,0,100,120],
+                    "input": 1
+                }]
+            }]
+        }
+
+    ]
+}
