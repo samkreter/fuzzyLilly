@@ -1,9 +1,11 @@
 from tree import Tree
+import numpy as np
 
 
-#n1 = Node(Ops().getFunc("union"),[inNode,inNode2])
+my_data = np.genfromtxt('car_data.csv', delimiter=',')
 
-dTree = Tree('test1.json')
 
-print(dTree.run())
+dTree = Tree('tree1.json')
+
+print(dTree.printInputs())
 

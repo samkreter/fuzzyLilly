@@ -2,6 +2,7 @@
     "type":"Node",
     "op":"compliment",
     "params":[{
+        "name":"testing",
         "type":"Input",
         "memFunc":[1,2,3],
         "input":1.5

@@ -18,7 +18,7 @@ class Tree():
 
         for node in baseNode['params']:
             if node['type'] == "Input":
-                InNode = InputNode(memFunc=MemFunc(node['memFunc']).memFunc, inData=node['input'])
+                InNode = InputNode(memFunc=MemFunc(node['memFunc']).memFunc, inData=node['input'],name=node['name'])
                 self.inputs.append(InNode)
                 params.append(InNode)
             else:
@@ -30,14 +30,19 @@ class Tree():
         for inp,num in zip(self.inputs,params):
             inp.inData = num
 
+    def printInputs(self):
+        for inp in self.inputs:
+            print(inp.name)
+
     def run(self):
         return self.root.run()
 
 
 class InputNode():
-    def __init__(self,memFunc,inData):
+    def __init__(self,memFunc,inData,name):
         self.memFunc = memFunc
         self.inData = inData
+        self.name = name
 
     def setInput(self, inData):
         self.inData = inData
