@@ -8,13 +8,13 @@ class Ops():
         return getattr(self,operator)
 
     def compliment(self, x):
-        return 1 - x
+        return 1 - x[0]
 
-    def intersect(self, x, y):
-        return min(x,y)
+    def intersect(self, params):
+        return min(*params)
 
-    def union(self, x, y):
-        return max(x,y)
+    def union(self, params):
+        return max(*params)
 
 
 def main():

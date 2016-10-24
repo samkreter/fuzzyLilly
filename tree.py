@@ -65,7 +65,7 @@ class Node():
         for param in self.params:
             items.append(param.run())
 
-        return self.operator(*items)
+        return self.operator(items)
 
 
 

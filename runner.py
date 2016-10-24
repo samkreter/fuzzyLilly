@@ -12,10 +12,12 @@ car_data = np.genfromtxt('car_data.csv', delimiter=',')
 
 
 
-dTree = Tree('tree1.json')
+dTree = Tree('test1.json')
 
-for data in car_data:
-    dTree.changeInputs(convertCarData(data))
-    print(dTree.run())
+print(dTree.run())
+
+# for data in car_data:
+#     dTree.changeInputs(convertCarData(data))
+#     print(dTree.run())
 
 
