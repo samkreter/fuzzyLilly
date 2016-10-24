@@ -1,6 +1,8 @@
 
-class Ops():
 
+
+class Ops():
+    """Used the generate the correct fuzzy set operation for each node"""
     def printStuff(self):
         print(dir(self))
 
@@ -16,10 +18,3 @@ class Ops():
     def union(self, params):
         return max(*params)
 
-
-def main():
-    t = Operators().getFunc("union")
-    print(t(.5,.4))
-
-if __name__ == '__main__':
-    main()

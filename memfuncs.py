@@ -1,7 +1,7 @@
 
 
 class MemFunc():
-    """docstring for memFunc"""
+    """Creates the specific membership function and is used to continue the process"""
 
     def __init__(self, specs=[]):
         length = len(specs)

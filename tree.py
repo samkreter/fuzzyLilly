@@ -3,7 +3,7 @@ import json
 from operators import Ops
 from memfuncs import MemFunc
 
-class Tree():
+class DecisionTree():
     """docstring for DecisionTree"""
     def __init__(self,filename):
         with open(filename) as data_file:
