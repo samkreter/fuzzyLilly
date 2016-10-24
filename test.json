@@ -1,0 +1,21 @@
+{
+    "type":"Node",
+    "op":"intersect",
+    "params":[{
+        "type":"Input",
+        "memFunc":[1,2,3],
+        "input":1.5
+    },
+    {
+        "type":"Node",
+        "op":"compliment",
+        "params":[{
+            "type": "Input",
+            "memFunc":[1,2,3],
+            "input": 1.5
+        }]
+    }]
+}
+
+
+
