@@ -12,7 +12,9 @@ Highway_MPG = 5
 Price = 6
 
 
+
 testName = "BoundedSumBaseTree"
+wValue = ""
 
 def convertCarData(data):
     return [data[Highway_MPG],data[Horsepower],data[City_MPG],data[Price],data[Risk],data[Value_Loss]]
@@ -36,8 +38,8 @@ for data in car_data:
 
 
 n, bins, patches = plt.hist(scores, normed=1, facecolor='green', alpha=0.75)
-plt.title(testName)
-plt.savefig("graphs/" + testName + ".png", bbox_inches='tight')
+plt.title(testName+wValue)
+plt.savefig("graphs/" + testName + wValue + ".png", bbox_inches='tight')
 plt.show()
 
 

@@ -1,7 +1,8 @@
 
-
+w = 10 ** 4
 
 class Ops():
+
     """Used the generate the correct fuzzy set operation for each node"""
     def printStuff(self):
         print(dir(self))
@@ -29,30 +30,17 @@ class Ops():
 
     #Yager Operations##########################
     def ycompliment(self,x):
-        if(len(x) < 2):
-            raise Exception("Must provide a W value for the Yager Operations")
-        w = x[0]
-        return (1 - x[1]**w)**(1/w)
+        return (1 - x[0]**w)**(1/w)
 
     def yunion(self,params):
-        if(len(params) < 3):
-            raise Exception("Must provide a W value for the Yager Operations")
-
-        w = params[0]
-        #Remove the w from the list
-        params = params[1:]
-
+        if(len(params) < 2):
+            raise Exception("Must provide at lease two params to perform an union")
         return (min(1,(sum(list(map(lambda x : x ** w,params))))**(1/w)))
 
 
     def yintersect(self,params):
-        if(len(params) < 3):
-            raise Exception("Must provide a W value for the Yager Operations")
-
-        w = params[0]
-        #Remove the w from the list
-        params = params[1:]
-
+        if(len(params) < 2):
+            raise Exception("Must provide at lease two params to perform an intersection")
         return (min(1,(sum(list(map(lambda x : (1-x) ** w,params))))**(1/w)))
 
 
