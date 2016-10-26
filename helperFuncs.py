@@ -4,13 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-# Car ID
-#  Risk
-#  Value Loss
-#  Horsepower
-#  City MPG
-#  Highway MPG
-#  Price
+
 
 
 

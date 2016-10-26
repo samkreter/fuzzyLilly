@@ -3,8 +3,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+Car_ID = 0
+Risk = 1
+Value_Loss = 2
+Horsepower = 3
+City_MPG = 4
+Highway_MPG = 5
+Price = 6
+
+
 def convertCarData(data):
-    return [data[5],data[3],data[4],data[6],data[1],data[2]]
+    return [data[Highway_MPG],data[Horsepower],data[City_MPG],data[Price],data[Risk],data[Value_Loss]]
 
 
 car_data = np.genfromtxt('car_data.csv', delimiter=',')
@@ -23,8 +32,6 @@ for data in car_data:
     scores.append(score)
     print(score)
 
-print(best[0])
-print(best[1])
 
 n, bins, patches = plt.hist(scores, normed=1, facecolor='green', alpha=0.75)
 plt.show()
