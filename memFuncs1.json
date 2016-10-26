@@ -1,0 +1,24 @@
+[
+    {
+        "name":"HighwayMPG-Good",
+        "type":"Input",
+        "memFuncSpecs":[30,40,60,60],
+        "memFunc":"trap",
+        "input":1
+    },
+    {
+        "name":"Horsepower-Average",
+        "type":"Input",
+        "memFuncSpecs":[60,100,140],
+        "memFunc":"tri",
+        "input":1
+    },
+    {
+        "name":"CityMPG-Poor",
+        "type": "Input",
+        "memFuncSpecs":[0,0,20,30],
+        "memFunc":"trap",
+        "input": 1
+    }
+
+]
