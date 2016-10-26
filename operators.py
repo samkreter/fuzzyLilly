@@ -9,6 +9,7 @@ class Ops():
     def getFunc(self,operator):
         return getattr(self,operator)
 
+    #Zadeh Operators#########################
     def compliment(self, x):
         return 1 - x[0]
 
@@ -17,4 +18,47 @@ class Ops():
 
     def union(self, params):
         return max(*params)
+
+
+    #boudned sum operations##################
+    def bunion(self,params):
+        return min(1,sum(params))
+
+    def bintersect(self,params):
+        return max(0,(sum(params) - 1))
+
+    #Yager Operations##########################
+    def ycompliment(self,x):
+        if(len(x) < 2):
+            raise Exception("Must provide a W value for the Yager Operations")
+        w = x[0]
+        return (1 - x[1]**w)**(1/w)
+
+    def yunion(self,params):
+        if(len(params) < 3):
+            raise Exception("Must provide a W value for the Yager Operations")
+
+        w = params[0]
+        #Remove the w from the list
+        params = params[1:]
+
+        return (min(1,(sum(list(map(lambda x : x ** w,params))))**(1/w)))
+
+
+    def yintersect(self,params):
+        if(len(params) < 3):
+            raise Exception("Must provide a W value for the Yager Operations")
+
+        w = params[0]
+        #Remove the w from the list
+        params = params[1:]
+
+        return (min(1,(sum(list(map(lambda x : (1-x) ** w,params))))**(1/w)))
+
+
+
+
+
+
+
 
