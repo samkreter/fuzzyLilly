@@ -5,7 +5,7 @@ import numpy as np
 
 
 
-
+labels = ["Car_ID","Risk",'Value_Loss','Horsepower','City_MPG','Highway_MPG','Price']
 
 
 def boxPlotForData():
@@ -17,6 +17,8 @@ def boxPlotForData():
 
         bplot = axes[row][col].boxplot(data[:,i+1],vert=True, notch=True,patch_artist=True)
         bplot['boxes'][0].set_facecolor(colors[i])
+
+        axes[row][col].set_title(labels[i])
 
     plt.show()
 
@@ -31,7 +33,7 @@ def histForData():
     for i in range(6):
         row, col = np.unravel_index(i,(3,2))
         axes[row][col].hist(data[:,i+1], facecolor='green')
-
+        axes[row][col].set_title(labels[i])
 
 
     plt.show()
@@ -68,6 +70,6 @@ def plotMemberFuncs():
 
 if __name__ == '__main__':
     histForData()
-    boxPlotForData()
+    #boxPlotForData()
 
 
