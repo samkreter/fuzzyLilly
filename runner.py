@@ -12,6 +12,8 @@ Highway_MPG = 5
 Price = 6
 
 
+testName = "BoundedSumBaseTree"
+
 def convertCarData(data):
     return [data[Highway_MPG],data[Horsepower],data[City_MPG],data[Price],data[Risk],data[Value_Loss]]
 
@@ -19,7 +21,7 @@ def convertCarData(data):
 car_data = np.genfromtxt('car_data.csv', delimiter=',')
 
 
-dTree = DecisionTree('tree1.json')
+dTree = DecisionTree(testName + '.json')
 scores = []
 best = [0,0]
 
@@ -34,6 +36,8 @@ for data in car_data:
 
 
 n, bins, patches = plt.hist(scores, normed=1, facecolor='green', alpha=0.75)
+plt.title(testName)
+plt.savefig("graphs/" + testName + ".png", bbox_inches='tight')
 plt.show()
 
 

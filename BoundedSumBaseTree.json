@@ -1,0 +1,66 @@
+{
+    "type":"Node",
+    "op":"intersect",
+    "params":[
+        {
+            "type":"Node",
+            "op":"bintersect",
+            "params":[{
+                "name":"HighwayMPG-Good",
+                "type":"Input",
+                "memFuncSpecs":[30,40,60,60],
+                "memFunc":"trap",
+                "input":1
+            },
+            {
+                "name":"Horsepower-Average",
+                "type":"Input",
+                "memFuncSpecs":[60,100,140],
+                "memFunc":"tri",
+                "input":1
+            },
+            {
+                "type":"Node",
+                "op":"compliment",
+                "params":[{
+                    "name":"CityMPG-Poor",
+                    "type": "Input",
+                    "memFuncSpecs":[0,0,20,30],
+                    "memFunc":"trap",
+                    "input": 1
+                }]
+            }]
+        },
+        {
+            "type":"Node",
+            "op":"bunion",
+            "params":[{
+                "name":"Price-cheap",
+                "type":"Input",
+                "memFuncSpecs":[0,0,7000,10000],
+                "memFunc":"trap",
+                "input":1
+            },
+            {
+                "type":"Node",
+                "op":"bintersect",
+                "params":[
+                {
+                    "name":"Risk-Low",
+                    "type":"Input",
+                    "memFuncSpecs":[-3,-3,-2,0],
+                    "memFunc":"trap",
+                    "input":1
+                },
+                {
+                    "name":"ValueLoss-Low",
+                    "type": "Input",
+                    "memFuncSpecs":[0,0,100,120],
+                    "memFunc":"trap",
+                    "input": 1
+                }]
+            }]
+        }
+
+    ]
+}
