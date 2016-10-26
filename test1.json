@@ -4,7 +4,8 @@
     "params":[{
         "name":"testing",
         "type":"Input",
-        "memFunc":[1,2,3],
+        "memFuncSpecs":[1,2,3],
+        "memFunc":"tri",
         "input":1.5
     }]
 }

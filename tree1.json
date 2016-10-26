@@ -8,13 +8,15 @@
             "params":[{
                 "name":"HighwayMPG-Good",
                 "type":"Input",
-                "memFunc":[30,40,60,60],
+                "memFuncSpecs":[30,40,60,60],
+                "memFunc":"trap",
                 "input":1
             },
             {
                 "name":"Horsepower-Average",
                 "type":"Input",
-                "memFunc":[60,100,140],
+                "memFuncSpecs":[60,100,140],
+                "memFunc":"tri",
                 "input":1
             },
             {
@@ -23,7 +25,8 @@
                 "params":[{
                     "name":"CityMPG-Poor",
                     "type": "Input",
-                    "memFunc":[0,0,20,30],
+                    "memFuncSpecs":[0,0,20,30],
+                    "memFunc":"trap",
                     "input": 1
                 }]
             }]
@@ -34,7 +37,8 @@
             "params":[{
                 "name":"Price-cheap",
                 "type":"Input",
-                "memFunc":[0,0,7000,10000],
+                "memFuncSpecs":[0,0,7000,10000],
+                "memFunc":"trap",
                 "input":1
             },
             {
@@ -44,13 +48,15 @@
                 {
                     "name":"Risk-Low",
                     "type":"Input",
-                    "memFunc":[-3,-3,-2,0],
+                    "memFuncSpecs":[-3,-3,-2,0],
+                    "memFunc":"trap",
                     "input":1
                 },
                 {
                     "name":"ValueLoss-Low",
                     "type": "Input",
-                    "memFunc":[0,0,100,120],
+                    "memFuncSpecs":[0,0,100,120],
+                    "memFunc":"trap",
                     "input": 1
                 }]
             }]

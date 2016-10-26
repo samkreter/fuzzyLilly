@@ -18,7 +18,7 @@ class DecisionTree():
 
         for node in baseNode['params']:
             if node['type'] == "Input":
-                InNode = InputNode(memFunc=MemFunc(node['memFunc']).memFunc, inData=node['input'],name=node['name'])
+                InNode = InputNode(memFunc=MemFunc(node['memFunc'],node['memFuncSpecs']).memFunc, inData=node['input'],name=node['name'])
                 self.inputs.append(InNode)
                 params.append(InNode)
             else:
