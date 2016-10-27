@@ -52,24 +52,35 @@ def plotMemberFuncs():
     for func in data:
     	memFuncs.append(MemFunc(func["memFunc"],func["memFuncSpecs"]))
 
-    for func in memFuncs:
+    colors = ["r","g","b"]
+
+    xaxis = [100000,0]
+
+    for func,color in zip(memFuncs,colors):
         xLow = func.specs[0] - 1
         xHigh = func.specs[-1] + 1
 
+        if xLow < xaxis[0]:
+            xaxis[0] = xLow
+        if xHigh > xaxis[1]:
+            xaxis[1] = xHigh
+
+
         x = np.arange(xLow,xHigh,.01)
-        #vfunc = np.vectorize(func.memFunc)
 
         y = []
         for i in x:
             y.append(func.memFunc(i));
 
-        plt.plot(x,y)
-        plt.axis([xLow, xHigh, -1,2])
-        plt.show()
+        plt.plot(x,y,color)
+        #plt.axis([xLow, xHigh, -1,2])
+
+    plt.axis([xaxis[0],xaxis[1],-1,2])
+    plt.show()
 
 
 if __name__ == '__main__':
-    histForData()
+    #histForData()
     #boxPlotForData()
-
+    plotMemberFuncs()
 
