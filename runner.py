@@ -14,8 +14,8 @@ Price = 6
 
 
 
-testName = "ZadehBaseTree"
-wValue = "wrong-data-convertion"
+testName = "OptimizedTree"
+wValue = "-w2"
 
 
 def convertCarData(data):

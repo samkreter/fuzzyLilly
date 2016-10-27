@@ -1,14 +1,14 @@
 {
     "type":"Node",
-    "op":"intersect",
+    "op":"yintersect",
     "params":[
         {
             "type":"Node",
-            "op":"intersect",
+            "op":"yintersect",
             "params":[
                 {
                     "type":"Node",
-                    "op":"union",
+                    "op":"yunion",
                     "params":[
                         {
                             "type":"Node",
@@ -41,7 +41,7 @@
                 },
                 {
                     "type":"Node",
-                    "op":"intersect",
+                    "op":"yintersect",
                     "params":[
                         {
                             "name":"Price-Average",
@@ -67,7 +67,7 @@
         },
         {
             "type":"Node",
-            "op":"intersect",
+            "op":"yintersect",
             "params":[{
                 "name":"Horsepower-Average",
                 "type":"Input",
