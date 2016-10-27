@@ -3,21 +3,21 @@
         "name":"HighwayMPG-Good",
         "type":"Input",
         "memFuncSpecs":[100,140,250,250],
-        "memFunc":"trap",
+        "memFunc":"gauss",
         "input":1
     },
     {
         "name":"HighwayMPG-Average",
         "type":"Input",
         "memFuncSpecs":[60,100,140],
-        "memFunc":"tri",
+        "memFunc":"gauss",
         "input":1
     },
     {
         "name":"HighwayMPG-Low",
         "type": "Input",
         "memFuncSpecs":[0,0,60,100],
-        "memFunc":"trap",
+        "memFunc":"gauss",
         "input": 1
     }
 

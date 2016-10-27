@@ -1,4 +1,4 @@
-
+import numpy as np
 
 class MemFunc():
     """Creates the specific membership function and is used to continue the process"""
@@ -14,6 +14,12 @@ class MemFunc():
     def __repr__(self):
         return self.memberFuncName
 
+
+    def gauss(self,input):
+        mu = np.mean(self.specs)
+        sigma = np.std(self.specs)
+
+        return np.exp(-((input - mu) ** 2.) / float(sigma) ** 2.)
 
     def trap(self,input):
         if(len(self.specs) < 4):
@@ -40,10 +46,3 @@ class MemFunc():
         return max(min( (input-specs[0]) / (specs[1] - specs[0]), (specs[2] - input)/(specs[2] - specs[1]) ),0)
 
 
-def main():
-    t = memFunc([1,2,3])
-    print(t.memFunc(2))
-
-
-if __name__ == '__main__':
-    main()
