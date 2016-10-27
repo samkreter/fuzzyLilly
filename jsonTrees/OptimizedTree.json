@@ -1,0 +1,89 @@
+{
+    "type":"Node",
+    "op":"intersect",
+    "params":[
+        {
+            "type":"Node",
+            "op":"intersect",
+            "params":[
+                {
+                    "type":"Node",
+                    "op":"union",
+                    "params":[
+                        {
+                            "type":"Node",
+                            "op":"compliment",
+                            "params":[
+                                {
+                                    "name":"CityMPG-Poor",
+                                    "type": "Input",
+                                    "memFuncSpecs":[0,0,20,30],
+                                    "memFunc":"trap",
+                                    "input": 1
+                                }
+                            ]
+                        },
+                        {
+                            "type":"Node",
+                            "op":"compliment",
+                            "params":[
+                                {
+                                    "name":"HighwayMPG-Poor",
+                                    "type": "Input",
+                                    "memFuncSpecs":[0,0,20,30],
+                                    "memFunc":"trap",
+                                    "input": 1
+                                }
+
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type":"Node",
+                    "op":"intersect",
+                    "params":[
+                        {
+                            "name":"Price-Average",
+                            "type":"Input",
+                            "memFuncSpecs":[7000,10000,20000],
+                            "memFunc":"tri",
+                            "input":1
+                        },
+                        {
+                            "type":"Node",
+                            "op":"compliment",
+                            "params":[
+                            {
+                                "name":"ValueLoss-High",
+                                "type":"Input",
+                                "memFuncSpecs":[120,200,300,300],
+                                "memFunc":"trap",
+                                "input":1
+                            }]
+                        }
+                    ]
+            }]
+        },
+        {
+            "type":"Node",
+            "op":"intersect",
+            "params":[{
+                "name":"Horsepower-Average",
+                "type":"Input",
+                "memFuncSpecs":[60,100,140],
+                "memFunc":"tri",
+                "input":1
+            },
+            {
+                "name":"Risk-Low",
+                "type":"Input",
+                "memFuncSpecs":[-3,-3,-2,0],
+                "memFunc":"trap",
+                "input":1
+            }]
+        }
+    ]
+
+}
+

@@ -44,7 +44,7 @@ def histForData():
 
 def plotMemberFuncs():
 
-    with open("memFuncs1.json") as data_file:
+    with open("jsonTrees/memFuncs1.json") as data_file:
     	data = json.load(data_file)
 
 
