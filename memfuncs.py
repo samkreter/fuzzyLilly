@@ -43,6 +43,13 @@ class MemFunc():
             raise Exception("Not enough specs passed in for the Triangle membership function")
 
         specs = self.specs
-        return max(min( (input-specs[0]) / (specs[1] - specs[0]), (specs[2] - input)/(specs[2] - specs[1]) ),0)
+
+        ba = (specs[1] - specs[0])
+
+        if ba == 0:
+            ba = 1
+
+        specs = self.specs
+        return max(min( (input-specs[0]) / ba , (specs[2] - input)/(specs[2] - specs[1]) ),0)
 
 

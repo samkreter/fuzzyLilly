@@ -10,7 +10,7 @@ labels = ["Car_ID","Risk",'Value_Loss','Horsepower','City_MPG','Highway_MPG','Pr
 
 def boxPlotForData():
     data = np.genfromtxt("car_data.csv",delimiter=',')
-    fig, axes = plt.subplots(nrows=3, ncols=2, figsize=(12, 5))
+    fig, axes = plt.subplots(nrows=3, ncols=2, figsize=(20, 10))
     colors = ["lightblue","lightgreen","pink","lightgoldenrodyellow", 'lightskyblue','lightsalmon']
     for i in range(6):
         row, col = np.unravel_index(i,(3,2))
@@ -20,6 +20,8 @@ def boxPlotForData():
 
         axes[row][col].set_title(labels[i])
 
+    plt.title("Box Plots of Car Data")
+    plt.savefig("graphs/boxplotsCarData.png", bbox_inches='tight')
     plt.show()
 
 
@@ -27,7 +29,7 @@ def histForData():
     data = np.genfromtxt("car_data.csv",delimiter=',')
     #plt.hist(data[:,1], facecolor='green')
 
-    fig, axes = plt.subplots(nrows=3, ncols=2, figsize=(12, 5))
+    fig, axes = plt.subplots(nrows=3, ncols=2, figsize=(20, 10))
 
 
     for i in range(6):
@@ -35,7 +37,8 @@ def histForData():
         axes[row][col].hist(data[:,i+1], facecolor='green')
         axes[row][col].set_title(labels[i])
 
-
+    plt.title("Histagram of Car Data")
+    plt.savefig("graphs/histCarData.png", bbox_inches='tight')
     plt.show()
 
 
@@ -76,6 +79,8 @@ def plotMemberFuncs():
         #plt.axis([xLow, xHigh, -1,2])
 
     plt.axis([xaxis[0],xaxis[1],-1,2])
+    plt.title("Standard Membership function for Highway MPG")
+    plt.savefig("graphs/TrapMF.png", bbox_inches='tight')
     plt.show()
 
 
@@ -83,4 +88,6 @@ if __name__ == '__main__':
     #histForData()
     #boxPlotForData()
     plotMemberFuncs()
+
+
 
