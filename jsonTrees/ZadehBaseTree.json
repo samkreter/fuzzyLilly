@@ -1,6 +1,6 @@
 {
     "type":"Node",
-    "op":"intersect",
+    "op":"union",
     "params":[
         {
             "type":"Node",
