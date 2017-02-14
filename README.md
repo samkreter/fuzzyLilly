@@ -1,2 +1,2 @@
 # fuzzy-decision-tree
-A wrapper to create fuzzy decision trees for more accurate fuzzy predictions
+An amazingly simple way to create fuzzy logic trees from a simple json interface 
