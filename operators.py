@@ -1,4 +1,6 @@
 
+
+#Gloabal w value, bad practice but this easy for now
 w = 2
 
 class Ops():
@@ -35,12 +37,16 @@ class Ops():
     def yunion(self,params):
         if(len(params) < 2):
             raise Exception("Must provide at lease two params to perform an union")
+        # Takes the list of params, maps them to the lambda function thaat
+        # will take x to the power of w
         return (min(1,(sum(list(map(lambda x : x ** w,params))))**(1/w)))
 
 
     def yintersect(self,params):
         if(len(params) < 2):
             raise Exception("Must provide at lease two params to perform an intersection")
+
+        # does the same mapping as above but subtracts one before the mapping
         return (min(1,(sum(list(map(lambda x : (1-x) ** w,params))))**(1/w)))
 
 

@@ -5,17 +5,22 @@ class MemFunc():
 
     def __init__(self, name,specs=[]):
         length = len(specs)
+        #Get the specs of how to define the membership functions
         self.specs = specs
         self.memFuncName = name
 
         self.memFunc = getattr(self,name)
 
 
+    #The to_string function to show the name of the membership function
+    # when trying to print
     def __repr__(self):
         return self.memberFuncName
 
 
     def gauss(self,input):
+        #Find the mean of the specs passed in
+        # easy way to convert the same definition of a trap func to a gauss
         mu = np.mean(self.specs)
         sigma = np.std(self.specs)
 
@@ -27,6 +32,8 @@ class MemFunc():
 
         specs = self.specs
 
+        #used to check for the case where ba or dc are the same causing
+        # a divide by zero error when computing the  function
         ba = (specs[1] - specs[0])
         dc = (specs[3] - specs[2])
 
@@ -44,6 +51,8 @@ class MemFunc():
 
         specs = self.specs
 
+        #used to check for the case where b a are the same causing
+        # a divide by zero error when computing the  function
         ba = (specs[1] - specs[0])
 
         if ba == 0:
