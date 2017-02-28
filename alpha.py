@@ -1,4 +1,5 @@
-
+from memfuncs import MemFunc
+import operator
 
 def pos1(fNum, alpha):
     return ((fNum[1]-fNum[0]) * alpha + fNum[0])
@@ -14,21 +15,29 @@ def fSub(a,b,c,d):
     return [a - d, b - c]
 
 def fMax(a,b,c,d):
-    return [max(a,c),max(b,d)]
+    return [max(a,c), max(b,d)]
 
 def fMin(a,b,c,d):
-    return [min(a,c),min(b,d)]
+    return [min(a,c), min(b,d)]
+
+def fMul(a,b,c,d):
+    [min(a*c,a*d,b*c,b*d), max(a*c,a*d,b*c,b*d)]
 
 def alphaCutsAdd(fNum1, fNum2, op):
 
+    #The levels of alpha cuts to take
     alphas = [0,.2,.8,1]
 
+    #defiinitions for each of the operations
     operations = {"add": fAdd,
                   "sub": fSub,
+                  "mul": fMul,
                   "max": fMax,
                   "min": fMin}
 
+    #List of points collected
     points = []
+
     #Use the belive equations to get the alpha intervals from the membership functions
     #TRI: [(b-a)alpha + a, c - (c-b)alpha]
     #TRAP: [(b-a)alpha + a, d - (d-c)alpha]
@@ -52,5 +61,46 @@ def alphaCutsAdd(fNum1, fNum2, op):
     return points
 
 
-print(alphaCutsAdd([1,2,3,4],[1,2,3,4],"min"))
+
+
+# How big do you want the fuzzy set to be outputted
+fsize = 10
+
+
+#Comput the
+def stage0(num,opString):
+
+
+    mem = MemFunc("trap",[1,2,3,10])
+
+    #Create a fuzzy number from the number that is passed in
+    fNum = MemFunc("tri",[num - fsize / 2, num, (num + fsize / 2 )])
+
+    #Collet the new fuzzy set thats created
+    newFSet = []
+
+    #That nice trick to be able to quicly add operators
+    operators = {"mul": operator.mul,
+                 "min": min}
+
+
+    #Convert the operator string to the actual op
+    op = operators[opString]
+
+
+    #Iterate throught the set
+    for i in range(num - fsize // 2, (num + fsize // 2 ) + 1):
+        newFSet.append((op(fNum.memFunc(i),mem.memFunc(i)),i))
+
+    return newFSet
+
+
+print(stage0(5,"min"))
+#print(alphaCutsAdd([1,2,3,4],[2,3,4,5],"sub"))
+
+
+
+
+
+
 
