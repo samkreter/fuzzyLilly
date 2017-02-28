@@ -1,5 +1,6 @@
 from memfuncs import MemFunc
 import operator
+import numpy as np
 
 def pos1(fNum, alpha):
     return ((fNum[1]-fNum[0]) * alpha + fNum[0])
@@ -92,10 +93,31 @@ def stage0(num,opString):
     for i in range(num - fsize // 2, (num + fsize // 2 ) + 1):
         newFSet.append((op(fNum.memFunc(i),mem.memFunc(i)),i))
 
-    return newFSet
+    #Force it to be traingular
+    mems, domain = zip(*newFSet)
+
+    maxIndex = np.argmax(mems)
+
+    for i in range(maxIndex, len(mems)):
+        if mems[i] == 0:
+            c = domain[i]
+            break;
+        c = domain[i]
+
+    for i in range(maxIndex,0,-1):
+        if mems[i] == 0:
+            a = domain[i]
+        a = domain[i]
+
+    b = domain[maxIndex]
+
+    print(a,b,c)
 
 
-print(stage0(5,"min"))
+    return [a,b,c]
+
+
+print(stage0(2,"min"))
 #print(alphaCutsAdd([1,2,3,4],[2,3,4,5],"sub"))
 
 

@@ -24,6 +24,29 @@ class MemFunc():
     def __repr__(self):
         return self.memberFuncName
 
+    def forceTri(self,fSet):
+        #Force it to be traingular
+        mems, domain = zip(*fSet)
+
+        maxIndex = np.argmax(mems)
+
+        #Init the varibles, if something goes wrong everything is 0
+        a,b,c = 0,0,0
+
+        for i in range(maxIndex, len(mems)):
+            if mems[i] == 0:
+                c = domain[i]
+                break;
+            c = domain[i]
+
+        for i in range(maxIndex,0,-1):
+            if mems[i] == 0:
+                a = domain[i]
+            a = domain[i]
+
+        b = domain[maxIndex]
+
+        return [a,b,c]
 
     def fMem(self,input):
 
@@ -48,7 +71,8 @@ class MemFunc():
         for i in range(input - fsize // 2, (input + fsize // 2 ) + 1):
             newFSet.append((op(fNum.memFunc(i),self.fMemFunc(i)),i))
 
-        return newFSet
+
+        return self.forceTri(newFSet)
 
 
 

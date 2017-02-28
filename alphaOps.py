@@ -29,6 +29,9 @@ class AlphaOps:
     def mul(self,a,b,c,d):
         return [min(a*c,a*d,b*c,b*d), max(a*c,a*d,b*c,b*d)]
 
+    def comp(self,a,b,c,d):
+        pass
+
     def alphaCuts(self, params):
 
         #The levels of alpha cuts to take
@@ -63,5 +66,5 @@ class AlphaOps:
 
         return fNum1
 
-a = AlphaOps("add").alphaCuts
-print(a([[1,2,3],[1,2,3],[1,2,3]]))
+# a = AlphaOps("add").alphaCuts
+# print(a([[1,2,3],[1,2,3],[1,2,3]]))

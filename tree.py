@@ -26,10 +26,11 @@ class DecisionTree():
         for node in baseNode['params']:
             #if its an input, create the input and track its location
             if node['type'] == "Input":
+
                 InNode = InputNode(memFunc=MemFunc(node['memFunc'],node['memFuncSpecs']).memFunc, inData=node['input'],name=node['name'])
                 self.inputs.append(InNode)
                 params.append(InNode)
-            else if node['type'] == "FuzzyInput":
+            elif node['type'] == "FuzzyInput":
 
                 memFuncs = node['memFunc'].split(":")
 
@@ -39,6 +40,7 @@ class DecisionTree():
                 params.append(InNode)
             #otherwise recusivly call the function on its paramters
             else:
+
                 params.append(self.createNodes(node))
 
         #once all paramaters are craeted, created the node and return it
