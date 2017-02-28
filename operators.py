@@ -1,4 +1,4 @@
-
+from alphaOps import AlphaOps
 
 #Gloabal w value, bad practice but this easy for now
 w = 2
@@ -10,7 +10,14 @@ class Ops():
         print(dir(self))
 
     def getFunc(self,operator):
-        return getattr(self,operator)
+
+        ops = operator.split(":")
+
+        if ops[0] == "alpha":
+            return AlphaOps(ops[1]).alphaCuts
+        else:
+            return getattr(self,ops[0])
+
 
     #Zadeh Operators#########################
     def compliment(self, x):
