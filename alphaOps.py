@@ -27,7 +27,7 @@ class AlphaOps:
         return [min(a,c), min(b,d)]
 
     def mul(self,a,b,c,d):
-        [min(a*c,a*d,b*c,b*d), max(a*c,a*d,b*c,b*d)]
+        return [min(a*c,a*d,b*c,b*d), max(a*c,a*d,b*c,b*d)]
 
     def alphaCuts(self, params):
 
@@ -35,7 +35,7 @@ class AlphaOps:
         alphas = [0,.2,.8,1]
 
         fNum1 = params[0]
-        fNum2 = params[1]
+
 
         #List of points collected
         points = []
@@ -44,21 +44,24 @@ class AlphaOps:
         #TRI: [(b-a)alpha + a, c - (c-b)alpha]
         #TRAP: [(b-a)alpha + a, d - (d-c)alpha]
 
-        for alpha in alphas:
+        for i in range(1,len(params)):
+            fNum2 = params[i]
+            for alpha in alphas:
 
-            a = self.pos1(fNum1,alpha)
-            b = self.pos2(fNum1,alpha)
-            c = self.pos1(fNum2,alpha)
-            d = self.pos2(fNum2,alpha)
+                a = self.pos1(fNum1,alpha)
+                b = self.pos2(fNum1,alpha)
+                c = self.pos1(fNum2,alpha)
+                d = self.pos2(fNum2,alpha)
 
-            points.append(self.op(a,b,c,d))
+                points.append(self.op(a,b,c,d))
 
 
-        #Create a trap membership function, tri is the same but the b and c values are equal
-        #Comment out for regular fuzzy sets
-        points = [points[0][0],points[3][0],points[3][1],points[0][1]]
+            #Create a trap membership function, tri is the same but the b and c values are equal
+            #Comment out for regular fuzzy sets
+            fNum1 = [points[0][0],points[3][0],points[3][1],points[0][1]]
+            points = []
 
-        return points
+        return fNum1
 
-# a = AlphaOps("ad").alphaCuts
-# print(a([[1,2,3],[1,2,3]]))
+a = AlphaOps("add").alphaCuts
+print(a([[1,2,3],[1,2,3],[1,2,3]]))
