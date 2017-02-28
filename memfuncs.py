@@ -6,7 +6,7 @@ fsize = 10
 class MemFunc():
     """Creates the specific membership function and is used to continue the process"""
 
-    def __init__(self, name,specs=[],fMemFunc = False, stage0Op = False):
+    def __init__(self, name,specs=[], fMemFunc = False, stage0Op = False):
 
         #Get the specs of how to define the membership functions
         self.specs = specs
