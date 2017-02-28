@@ -48,6 +48,11 @@ class MemFunc():
 
         return [a,b,c]
 
+
+    def normilize(self,input):
+        # xi - min(X) / max(X) - min(X)
+        pass
+
     def fMem(self,input):
 
         #Create a fuzzy number from the number that is passed in
