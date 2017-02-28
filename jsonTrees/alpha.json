@@ -1,22 +1,22 @@
 {
     "type":"Node",
-    "op":"yintersect",
+    "op":"alpha:min",
     "params":[
         {
             "type":"Node",
-            "op":"yintersect",
+            "op":"alpha:min",
             "params":[
                 {
                     "type":"Node",
-                    "op":"yunion",
+                    "op":"alpha:min",
                     "params":[
                         {
                             "type":"Node",
-                            "op":"compliment",
+                            "op":"alpha:comp",
                             "params":[
                                 {
                                     "name":"CityMPG-Poor",
-                                    "type": "Input",
+                                    "type": "FuzzyInput",
                                     "memFuncSpecs":[0,0,20,30],
                                     "memFunc":"trap",
                                     "input": 1
@@ -25,7 +25,7 @@
                         },
                         {
                             "type":"Node",
-                            "op":"compliment",
+                            "op":"alpha:comp",
                             "params":[
                                 {
                                     "name":"HighwayMPG-Poor",
@@ -41,7 +41,7 @@
                 },
                 {
                     "type":"Node",
-                    "op":"yintersect",
+                    "op":"alpha:min",
                     "params":[
                         {
                             "name":"Price-Average",
@@ -52,7 +52,7 @@
                         },
                         {
                             "type":"Node",
-                            "op":"compliment",
+                            "op":"alpha:comp",
                             "params":[
                             {
                                 "name":"ValueLoss-High",
@@ -67,7 +67,7 @@
         },
         {
             "type":"Node",
-            "op":"yintersect",
+            "op":"alpha:min",
             "params":[{
                 "name":"Horsepower-Average",
                 "type":"Input",
