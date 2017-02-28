@@ -25,7 +25,7 @@ class MemFunc():
         return self.memberFuncName
 
 
-    def fuzzyMem(self,input):
+    def fMem(self,input):
 
         #Create a fuzzy number from the number that is passed in
         fNum = MemFunc("tri",[input - fsize / 2, input, (input + fsize / 2 )])

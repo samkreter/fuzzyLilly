@@ -18,7 +18,7 @@
                                     "name":"CityMPG-Poor",
                                     "type": "FuzzyInput",
                                     "memFuncSpecs":[0,0,20,30],
-                                    "memFunc":"trap",
+                                    "memFunc":"fMem:trap",
                                     "input": 1
                                 }
                             ]
@@ -29,9 +29,9 @@
                             "params":[
                                 {
                                     "name":"HighwayMPG-Poor",
-                                    "type": "Input",
+                                    "type": "FuzzyInput",
                                     "memFuncSpecs":[0,0,20,30],
-                                    "memFunc":"trap",
+                                    "memFunc":"fMem:trap",
                                     "input": 1
                                 }
 
@@ -45,9 +45,9 @@
                     "params":[
                         {
                             "name":"Price-Average",
-                            "type":"Input",
+                            "type":"FuzzyInput",
                             "memFuncSpecs":[7000,10000,20000],
-                            "memFunc":"tri",
+                            "memFunc":"fMem:tri",
                             "input":1
                         },
                         {
@@ -56,9 +56,9 @@
                             "params":[
                             {
                                 "name":"ValueLoss-High",
-                                "type":"Input",
+                                "type":"FuzzyInput",
                                 "memFuncSpecs":[120,200,300,300],
-                                "memFunc":"trap",
+                                "memFunc":"fMem:trap",
                                 "input":1
                             }]
                         }
@@ -70,16 +70,16 @@
             "op":"alpha:min",
             "params":[{
                 "name":"Horsepower-Average",
-                "type":"Input",
+                "type":"FuzzyInput",
                 "memFuncSpecs":[60,100,140],
-                "memFunc":"tri",
+                "memFunc":"fMem:tri",
                 "input":1
             },
             {
                 "name":"Risk-Low",
-                "type":"Input",
+                "type":"FuzzyInput",
                 "memFuncSpecs":[-3,-3,-2,0],
-                "memFunc":"trap",
+                "memFunc":"fMem:trap",
                 "input":1
             }]
         }
