@@ -49,9 +49,6 @@ class MemFunc():
         return [a,b,c]
 
 
-    def normilize(self,input):
-        # xi - min(X) / max(X) - min(X)
-        pass
 
     def fMem(self,input):
 
