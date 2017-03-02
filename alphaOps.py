@@ -34,6 +34,9 @@ class AlphaOps:
     def yagerComp(self,a,b):
         return [(1-a)**(1/w), (1-b)**(1/w)]
 
+    def yagerUnion(self,a,b,c,d):
+        return [min(1, (a**w + c**w) ** (1/w)),min(1, (b**w + d**w) ** (1/w))]
+
     def comp(self,a,b):
         return [1-a, 1-b]
 
