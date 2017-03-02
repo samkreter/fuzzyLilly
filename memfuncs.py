@@ -6,15 +6,15 @@ fsize = 10
 class MemFunc():
     """Creates the specific membership function and is used to continue the process"""
 
-    def __init__(self, name,specs=[], fMemFunc = False, stage0Op = False):
+    def __init__(self, name,specs=[], fMemFunc = False, fNumDiff = 2):
 
         #Get the specs of how to define the membership functions
         self.specs = specs
         self.memFuncName = name
 
-        if fMemFunc and stage0Op:
+        if fMemFunc:
             self.fMemFunc = getattr(self,fMemFunc)
-            self.stage0Op = stage0Op
+            self.fNumDiff = fNumDiff
 
         self.memFunc = getattr(self,name)
 
@@ -24,57 +24,18 @@ class MemFunc():
     def __repr__(self):
         return self.memberFuncName
 
-    def forceTri(self,fSet):
-        #Force it to be traingular
-        mems, domain = zip(*fSet)
-
-        maxIndex = np.argmax(mems)
-
-        #Init the varibles, if something goes wrong everything is 0
-        a,b,c = 0,0,0
-
-        for i in range(maxIndex, len(mems)):
-            if mems[i] == 0:
-                c = domain[i]
-                break;
-            c = domain[i]
-
-        for i in range(maxIndex,0,-1):
-            if mems[i] == 0:
-                a = domain[i]
-            a = domain[i]
-
-        b = domain[maxIndex]
-
-        return [a,b,c]
-
 
 
     def fMem(self,input):
 
-        #Create a fuzzy number from the number that is passed in
-        fNum = MemFunc("tri",[input - fsize / 2, input, (input + fsize / 2 )])
+        #Get the fuzzy value of the input
+        b = self.fMemFunc(input)
+        c = min(1,b + self.fNumDiff)
+        a = max(0,b - self.fNumDiff)
 
-        #Collet the new fuzzy set thats created
-        newFSet = []
+        #Convert it to a fuzzy number
+        return [a, b, c]
 
-        #That nice trick to be able to quicly add operators
-        operators = {"mul": np.multiply,
-                     "min": min}
-
-
-        #Convert the operator string to the actual op
-        # Weird thing to do but its a little safer than just letting the user
-        # pass in a random op, at least for now
-        op = operators[self.stage0Op]
-
-
-        #Iterate throught the set
-        for i in range(input - fsize // 2, (input + fsize // 2 ) + 1):
-            newFSet.append((op(fNum.memFunc(i),self.fMemFunc(i)),i))
-
-
-        return self.forceTri(newFSet)
 
 
 

@@ -1,3 +1,5 @@
+w = 2
+
 class AlphaOps:
 
     def __init__(self,op):
@@ -29,8 +31,11 @@ class AlphaOps:
     def mul(self,a,b,c,d):
         return [min(a*c,a*d,b*c,b*d), max(a*c,a*d,b*c,b*d)]
 
-    def comp(self,a,b,c,d):
-        pass
+    def yagerComp(self,a,b):
+        return [(1-a)**(1/w), (1-b)**(1/w)]
+
+    def comp(self,a,b):
+        return [1-a, 1-b]
 
     def alphaCuts(self, params):
 

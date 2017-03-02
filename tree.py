@@ -34,7 +34,7 @@ class DecisionTree():
 
                 memFuncs = node['memFunc'].split(":")
 
-                InNode = InputNode(memFunc=MemFunc(memFuncs[0],node['memFuncSpecs'],fMemFunc = memFuncs[1], stage0Op = "mul").memFunc, inData=node['input'],name=node['name'])
+                InNode = InputNode(memFunc=MemFunc(memFuncs[0],node['memFuncSpecs'],fMemFunc = memFuncs[1], fNumDiff = .3).memFunc, inData=node['input'],name=node['name'])
 
                 self.inputs.append(InNode)
                 params.append(InNode)

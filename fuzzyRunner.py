@@ -33,16 +33,21 @@ def printInputs():
 
 def main():
     #import the data from a csv
-    #car_data = np.genfromtxt('car_data.csv', delimiter=',')
+    car_data = np.genfromtxt('car_data.csv', delimiter=',')
 
     #call the tree creator module and pass the name of the json file to it
     dTree = DecisionTree('jsonTrees/' + testName + '.json')
 
-    print(dTree.run())
+    for data in car_data:
 
-    scores = []
-    #track the best score and data
-    best = [0,0]
+        #change the inputs for each of the cars in the tree
+        dTree.changeInputs(convertCarData2(data))
+        #get the score for that car
+        score = dTree.run()
+        print(score)
+        break
+
+
 
 if __name__ == '__main__':
     main()
