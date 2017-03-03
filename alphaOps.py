@@ -31,14 +31,24 @@ class AlphaOps:
     def mul(self,a,b,c,d):
         return [min(a*c,a*d,b*c,b*d), max(a*c,a*d,b*c,b*d)]
 
+    #Look into the change here
+    def comp(self,a,b):
+        return [1-b, 1-a]
+
+########## Yager Ops ####################
+
+#Beta
     def yagerComp(self,a,b):
         return [(1-a)**(1/w), (1-b)**(1/w)]
 
     def yagerUnion(self,a,b,c,d):
         return [min(1, (a**w + c**w) ** (1/w)),min(1, (b**w + d**w) ** (1/w))]
 
-    def comp(self,a,b):
-        return [1-a, 1-b]
+    def yagerIntersect(self,a,b,c,d):
+        return [1 - min(1,((1 - a)**w + (1 - c)**w)), 1 - min(1,((1 - b)**w + (1 - d)**w))]
+
+
+
 
     def alphaCuts(self, params):
 
