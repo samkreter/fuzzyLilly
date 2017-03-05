@@ -1,6 +1,7 @@
 from tree import DecisionTree
 import numpy as np
 import matplotlib.pyplot as plt
+from memfuncs import MemFunc
 
 Car_ID = 0
 Risk = 1
@@ -12,7 +13,8 @@ Price = 6
 
 
 #Used to name files for printing out the graphs
-testName = "alpha"
+testF = "alpha"
+testN = "ZadehBaseTree"
 wValue = "-w2"
 
 
@@ -36,16 +38,31 @@ def main():
     car_data = np.genfromtxt('car_data.csv', delimiter=',')
 
     #call the tree creator module and pass the name of the json file to it
-    dTree = DecisionTree('jsonTrees/' + testName + '.json')
+    fTree = DecisionTree('jsonTrees/' + testF + '.json')
+    nTree = DecisionTree('jsonTrees/' + testN + '.json')
 
-    for data in car_data:
 
+    for data in car_data[np.random.randint(car_data.shape[0], size=20), :]:
+        inputs = convertCarData2(data)
         #change the inputs for each of the cars in the tree
-        dTree.changeInputs(convertCarData2(data))
+        fTree.changeInputs(inputs)
+        nTree.changeInputs(inputs)
+
         #get the score for that car
-        score = dTree.run()
-        print(score)
-        break
+        fScore = fTree.run()
+        nScore = nTree.run()
+
+        print("Inputs:",inputs)
+        print("FSCORE #######:",fScore)
+        print("NSCORE #######:",nScore)
+
+
+        f1 = MemFunc('trap',fScore)
+        X = np.arange(0,1,.05)
+
+        plt.plot(X,[f1.memFunc(i) for i in X])
+        plt.show()
+        t = input()
 
 
 

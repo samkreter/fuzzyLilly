@@ -14,7 +14,7 @@ Price = 6
 
 
 #Used to name files for printing out the graphs
-testName = "OptimizedTree"
+testName = "alpha"
 wValue = "-w2"
 
 
@@ -52,6 +52,7 @@ def main():
         dTree.changeInputs(convertCarData2(data))
         #get the score for that car
         score = dTree.run()
+
 
         #check if its the highest
         if(score > best[0]):

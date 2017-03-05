@@ -1,3 +1,4 @@
+
 {
     "type":"Node",
     "op":"alpha:min",
@@ -5,70 +6,14 @@
         {
             "type":"Node",
             "op":"alpha:min",
-            "params":[
-                {
-                    "type":"Node",
-                    "op":"alpha:min",
-                    "params":[
-                        {
-                            "type":"Node",
-                            "op":"alpha:comp",
-                            "params":[
-                                {
-                                    "name":"CityMPG-Poor",
-                                    "type": "FuzzyInput",
-                                    "memFuncSpecs":[0,0,20,30],
-                                    "memFunc":"fMem:trap",
-                                    "input": 1
-                                }
-                            ]
-                        },
-                        {
-                            "type":"Node",
-                            "op":"alpha:comp",
-                            "params":[
-                                {
-                                    "name":"HighwayMPG-Poor",
-                                    "type": "FuzzyInput",
-                                    "memFuncSpecs":[0,0,20,30],
-                                    "memFunc":"fMem:trap",
-                                    "input": 1
-                                }
-
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type":"Node",
-                    "op":"alpha:min",
-                    "params":[
-                        {
-                            "name":"Price-Average",
-                            "type":"FuzzyInput",
-                            "memFuncSpecs":[7000,10000,20000],
-                            "memFunc":"fMem:tri",
-                            "input":1
-                        },
-                        {
-                            "type":"Node",
-                            "op":"alpha:comp",
-                            "params":[
-                            {
-                                "name":"ValueLoss-High",
-                                "type":"FuzzyInput",
-                                "memFuncSpecs":[120,200,300,300],
-                                "memFunc":"fMem:trap",
-                                "input":1
-                            }]
-                        }
-                    ]
-            }]
-        },
-        {
-            "type":"Node",
-            "op":"alpha:min",
             "params":[{
+                "name":"HighwayMPG-Good",
+                "type":"FuzzyInput",
+                "memFuncSpecs":[30,40,60,60],
+                "memFunc":"fMem:trap",
+                "input":1
+            },
+            {
                 "name":"Horsepower-Average",
                 "type":"FuzzyInput",
                 "memFuncSpecs":[60,100,140],
@@ -76,14 +21,49 @@
                 "input":1
             },
             {
-                "name":"Risk-Low",
+                "type":"Node",
+                "op":"alpha:comp",
+                "params":[{
+                    "name":"CityMPG-Poor",
+                    "type": "FuzzyInput",
+                    "memFuncSpecs":[0,0,20,30],
+                    "memFunc":"fMem:trap",
+                    "input": 1
+                }]
+            }]
+        },
+        {
+            "type":"Node",
+            "op":"alpha:max",
+            "params":[{
+                "name":"Price-cheap",
                 "type":"FuzzyInput",
-                "memFuncSpecs":[-3,-3,-2,0],
+                "memFuncSpecs":[0,0,7000,10000],
                 "memFunc":"fMem:trap",
                 "input":1
+            },
+            {
+                "type":"Node",
+                "op":"alpha:min",
+                "params":[
+                {
+                    "name":"Risk-Low",
+                    "type":"FuzzyInput",
+                    "memFuncSpecs":[-3,-3,-2,0],
+                    "memFunc":"fMem:trap",
+                    "input":1
+                },
+                {
+                    "name":"ValueLoss-Low",
+                    "type": "FuzzyInput",
+                    "memFuncSpecs":[0,0,100,120],
+                    "memFunc":"fMem:trap",
+                    "input": 1
+                }]
             }]
         }
-    ]
 
+    ]
 }
+
 

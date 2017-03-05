@@ -30,6 +30,7 @@ class DecisionTree():
                 InNode = InputNode(memFunc=MemFunc(node['memFunc'],node['memFuncSpecs']).memFunc, inData=node['input'],name=node['name'])
                 self.inputs.append(InNode)
                 params.append(InNode)
+
             elif node['type'] == "FuzzyInput":
 
                 memFuncs = node['memFunc'].split(":")

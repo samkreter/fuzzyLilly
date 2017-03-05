@@ -26,9 +26,6 @@ class ExtentionOps:
 
 
 
-
-
-
     def extention(self, params):
 
 
@@ -41,7 +38,7 @@ class ExtentionOps:
 
             for a in A:
                 for b in B:
-                    z = self.op(a[0], b[0])
+                    z = round2(self.op(a[0], b[0]))
                     f = min(a[1],b[1])
 
                     try:
@@ -54,10 +51,20 @@ class ExtentionOps:
 
             fNum1 = out
 
+            out = list(zip(out[0],out[1]))
+
+            out.sort(key=lambda x:x[0])
+            print(out)
+            out = list(zip(*out))
+
+
+
+            #[i[0] for i in sorted(enumerate(myList), key=lambda x:x[1])]
+
             plt.plot(out[0],out[1],c='r')
             plt.plot(A[:,0],A[:,1],c='g')
             plt.plot(B[:,0],B[:,1],c='b')
-            #plt.xlim([0,1])
+            plt.xlim([0,2])
             plt.ylim([0,1])
             plt.show()
 
@@ -66,16 +73,28 @@ class ExtentionOps:
 
 
 
-e = ExtentionOps(np.divide)
-mem1 = MemFunc('tri',[.2,.3,.4])
-mem2 = MemFunc('tri',[.4,.5,.6])
+e = ExtentionOps("mul")
+mem1 = MemFunc('tri',[.2,.4,.6])
+mem2 = MemFunc('tri',[.4,.6,.8])
+#mem2 = lambda x: 1 if x == 1 else 0
+
+
+def round2(val):
+    val = int(val * 100)
+    return val / 100
+
+
 A = []
 B = []
 
-for i in [0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1]:
-    A.append([i,mem1.memFunc(i)])
+t = [0,.05, .1, .15, .2,.25,.3,.35,.4,.45,.5,.55,.6,.65,.7,.75,.8,.85,.9,.95,1]
+#t = [0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1]
 
-    B.append([i,mem2.memFunc(i)])
+for i in np.arange(0,1,.05):
+
+    A.append([i,round2(mem1.memFunc(i))])
+
+    B.append([i,round2(mem2.memFunc(i))])
 
 A = np.array(A)
 B = np.array(B)

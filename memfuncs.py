@@ -33,6 +33,7 @@ class MemFunc():
         c = min(1,b + self.fNumDiff)
         a = max(0,b - self.fNumDiff)
 
+        print("Fmem:",[a,b,c])
         #Convert it to a fuzzy number
         return [a, b, c]
 
