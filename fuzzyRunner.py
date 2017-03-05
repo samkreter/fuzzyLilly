@@ -42,8 +42,11 @@ def main():
     nTree = DecisionTree('jsonTrees/' + testN + '.json')
 
 
+
+
+
     for data in car_data[np.random.randint(car_data.shape[0], size=20), :]:
-        inputs = convertCarData2(data)
+        inputs = convertCarData(data)
         #change the inputs for each of the cars in the tree
         fTree.changeInputs(inputs)
         nTree.changeInputs(inputs)

@@ -6,7 +6,7 @@ fsize = 10
 class MemFunc():
     """Creates the specific membership function and is used to continue the process"""
 
-    def __init__(self, name,specs=[], fMemFunc = False, fNumDiff = 2):
+    def __init__(self, name,specs=[], fMemFunc = False, fNumDiff = .2):
 
         #Get the specs of how to define the membership functions
         self.specs = specs
@@ -30,12 +30,13 @@ class MemFunc():
 
         #Get the fuzzy value of the input
         b = self.fMemFunc(input)
+
         c = min(1,b + self.fNumDiff)
         a = max(0,b - self.fNumDiff)
-
-        print("Fmem:",[a,b,c])
+        print("input: ",input, "specs: ",self.specs,"out:",b)
+        #print("Fmem:",[a,b,c])
         #Convert it to a fuzzy number
-        return [a, b, c]
+        return [a, b, b, c]
 
 
 

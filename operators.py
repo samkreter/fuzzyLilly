@@ -1,4 +1,5 @@
 from alphaOps import AlphaOps
+from extention import ExtentionOps
 
 #Gloabal w value, bad practice but this easy for now
 w = 2
@@ -15,6 +16,8 @@ class Ops():
 
         if ops[0] == "alpha":
             return AlphaOps(ops[1]).alphaCuts
+        elif ops[0] == "extend":
+            return ExtentionOps(ops[1]).extention
         else:
             return getattr(self,ops[0])
 
