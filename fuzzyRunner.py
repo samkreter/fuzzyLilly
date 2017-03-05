@@ -45,9 +45,10 @@ def main():
 
 
 
+    #iterator = car_data[np.random.randint(car_data.shape[0], size=20), :]
+    iterator = car_data
 
-
-    for data in car_data[np.random.randint(car_data.shape[0], size=20), :]:
+    for data in iterator:
         inputs = convertCarData(data)
         #change the inputs for each of the cars in the tree
         aTree.changeInputs(inputs)
@@ -64,12 +65,17 @@ def main():
         print("NSCORE #######:",nScore)
         print("ESCORE #######:",eScore)
 
+        eScore = np.array(eScore)
 
         f1 = MemFunc('trap',aScore)
         X = np.arange(0,1,.05)
 
-        plt.plot(X,[f1.memFunc(i) for i in X],c='r')
-        plt.plot(eScore[0],eScore[1],c='b')
+        l1, = plt.plot(X,[f1.memFunc(i) for i in X],c='r',linewidth=2.0,label="AlphaCuts")
+        l2, = plt.plot(eScore[:,0],eScore[:,1],c='b',linewidth=2.0,label="Extention Principle")
+        l3 = plt.axvline(nScore,c='g',linewidth=2.0,label="Crisp")
+
+        plt.legend(handles=[l1,l2,l3])
+
         plt.show()
         t = input()
 

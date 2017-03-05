@@ -1,0 +1,69 @@
+
+{
+    "type":"Node",
+    "op":"alpha:max",
+    "params":[
+        {
+            "type":"Node",
+            "op":"alpha:max",
+            "params":[{
+                "name":"HighwayMPG-Good",
+                "type":"FuzzyInput",
+                "memFuncSpecs":[30,40,60,60],
+                "memFunc":"fMem:trap",
+                "input":1
+            },
+            {
+                "name":"Horsepower-Average",
+                "type":"FuzzyInput",
+                "memFuncSpecs":[60,100,140],
+                "memFunc":"fMem:tri",
+                "input":1
+            },
+            {
+                "type":"Node",
+                "op":"alpha:comp",
+                "params":[{
+                    "name":"CityMPG-Poor",
+                    "type": "FuzzyInput",
+                    "memFuncSpecs":[0,0,20,30],
+                    "memFunc":"fMem:trap",
+                    "input": 1
+                }]
+            }]
+        },
+        {
+            "type":"Node",
+            "op":"alpha:max",
+            "params":[{
+                "name":"Price-cheap",
+                "type":"FuzzyInput",
+                "memFuncSpecs":[0,0,7000,10000],
+                "memFunc":"fMem:trap",
+                "input":1
+            },
+            {
+                "type":"Node",
+                "op":"alpha:max",
+                "params":[
+                {
+                    "name":"Risk-Low",
+                    "type":"FuzzyInput",
+                    "memFuncSpecs":[-3,-3,-2,0],
+                    "memFunc":"fMem:trap",
+                    "input":1
+                },
+                {
+                    "name":"ValueLoss-Low",
+                    "type": "FuzzyInput",
+                    "memFuncSpecs":[0,0,100,120],
+                    "memFunc":"fMem:trap",
+                    "input": 1
+                }]
+            }]
+        }
+
+    ]
+}
+
+

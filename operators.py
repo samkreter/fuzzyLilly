@@ -17,7 +17,7 @@ class Ops():
         if ops[0] == "alpha":
             return AlphaOps(ops[1]).alphaCuts
         elif ops[0] == "extend":
-            return ExtentionOps(ops[1]).extention
+            return ExtentionOps(ops[1]).func
         else:
             return getattr(self,ops[0])
 
