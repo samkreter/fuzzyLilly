@@ -26,6 +26,20 @@ class ExtentionOps:
 
 
 
+    def convertToDomain(self,A):
+        mem1 = MemFunc("trap",A)
+        newA = []
+
+        for i in np.arange(0,1,.05):
+
+            newA.append([i,self.round2(mem1.memFunc(i))])
+
+        return np.array(newA)
+
+    def round2(self,val):
+        val = int(val * 100)
+        return val / 100
+
     def extention(self, params):
 
 
@@ -34,11 +48,17 @@ class ExtentionOps:
         for i in range(1,len(params)):
             B = params[i]
 
+
+            if len(A) == 4:
+                A = self.convertToDomain(A)
+                B = self.convertToDomain(B)
+
+
             out = [[],[]]
 
             for a in A:
                 for b in B:
-                    z = round2(self.op(a[0], b[0]))
+                    z = self.round2(self.op(a[0], b[0]))
                     f = min(a[1],b[1])
 
                     try:
@@ -54,7 +74,7 @@ class ExtentionOps:
             out = list(zip(out[0],out[1]))
 
             out.sort(key=lambda x:x[0])
-            print(out)
+
             out = list(zip(*out))
 
 
@@ -73,30 +93,30 @@ class ExtentionOps:
 
 
 
-# e = ExtentionOps("mul")
+# e = ExtentionOps("add")
 # mem1 = MemFunc('tri',[.2,.4,.6])
 # mem2 = MemFunc('tri',[.4,.6,.8])
 # #mem2 = lambda x: 1 if x == 1 else 0
 
 
-# def round2(val):
-#     val = int(val * 100)
-#     return val / 100
+# A = [.2,.4,.4,.6]
+# B = [.4,.6,.6,.8]
+# # A = []
+# # B = []
 
+# # for i in np.arange(0,1,.05):
 
-# A = []
-# B = []
+# #     A.append([i,round2(mem1.memFunc(i))])
 
-# t = [0,.05, .1, .15, .2,.25,.3,.35,.4,.45,.5,.55,.6,.65,.7,.75,.8,.85,.9,.95,1]
-# #t = [0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1]
+# #     B.append([i,round2(mem2.memFunc(i))])
 
-# for i in np.arange(0,1,.05):
-
-#     A.append([i,round2(mem1.memFunc(i))])
-
-#     B.append([i,round2(mem2.memFunc(i))])
-
-# A = np.array(A)
-# B = np.array(B)
+# # A = np.array(A)
+# # B = np.array(B)
 
 # e.extention([A,B])
+
+
+
+
+
+
