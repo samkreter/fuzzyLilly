@@ -17,6 +17,7 @@ class ExtentionOps:
                   'min':min,
                   'pow':pow}
 
+
         if op in opDict:
             self.op = opDict[op]
         else:
@@ -40,6 +41,36 @@ class ExtentionOps:
         val = int(val * 100)
         return val / 100
 
+    def comp(self,A):
+        out = [[],[]]
+        for a in A:
+            z = self.round2(1 - a[0])
+            f = a[1]
+
+            try:
+
+                index = out[0].index(z)
+
+                out[1][index] = max(out[1][index],f)
+            except ValueError:
+                out[0].append(z)
+                out[1].append(f)
+
+
+        out = list(zip(out[0],out[1]))
+
+        out.sort(key=lambda x:x[0])
+
+        out = list(zip(*out))
+
+
+        fNum1 = out
+        #[i[0] for i in sorted(enumerate(myList), key=lambda x:x[1])]
+
+        plt.plot(out[0],out[1],c='r')
+        plt.plot(A[:,0],A[:,1],c='g')
+        plt.show()
+
     def extention(self, params):
 
 
@@ -49,6 +80,7 @@ class ExtentionOps:
             B = params[i]
 
 
+            #Convert a membership function to the right domain the first time
             if len(A) == 4:
                 A = self.convertToDomain(A)
                 B = self.convertToDomain(B)
@@ -69,7 +101,7 @@ class ExtentionOps:
                         out[1].append(f)
 
 
-            fNum1 = out
+
 
             out = list(zip(out[0],out[1]))
 
@@ -78,42 +110,43 @@ class ExtentionOps:
             out = list(zip(*out))
 
 
-
+            fNum1 = out
             #[i[0] for i in sorted(enumerate(myList), key=lambda x:x[1])]
 
-            plt.plot(out[0],out[1],c='r')
-            plt.plot(A[:,0],A[:,1],c='g')
-            plt.plot(B[:,0],B[:,1],c='b')
-            plt.xlim([0,2])
-            plt.ylim([0,1])
-            plt.show()
+            # plt.plot(out[0],out[1],c='r')
+            # plt.plot(A[:,0],A[:,1],c='g')
+            # plt.plot(B[:,0],B[:,1],c='b')
+            # plt.xlim([0,2])
+            # plt.ylim([0,1])
+            # plt.show()
 
         return fNum1
 
 
 
 
-# e = ExtentionOps("add")
-# mem1 = MemFunc('tri',[.2,.4,.6])
-# mem2 = MemFunc('tri',[.4,.6,.8])
-# #mem2 = lambda x: 1 if x == 1 else 0
+e = ExtentionOps("add")
+mem1 = MemFunc('tri',[.1,.2,.4])
+mem2 = MemFunc('tri',[.4,.6,.8])
+#mem2 = lambda x: 1 if x == 1 else 0
 
 
 # A = [.2,.4,.4,.6]
 # B = [.4,.6,.6,.8]
-# # A = []
-# # B = []
+A = []
+B = []
 
-# # for i in np.arange(0,1,.05):
+for i in np.arange(0,1,.05):
 
-# #     A.append([i,round2(mem1.memFunc(i))])
+    A.append([i,e.round2(mem1.memFunc(i))])
 
-# #     B.append([i,round2(mem2.memFunc(i))])
+    B.append([i,e.round2(mem2.memFunc(i))])
 
-# # A = np.array(A)
-# # B = np.array(B)
+A = np.array(A)
+B = np.array(B)
 
-# e.extention([A,B])
+e.comp(A)
+#e.extention([A,B])
 
 
 
