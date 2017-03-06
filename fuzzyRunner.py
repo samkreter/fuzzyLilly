@@ -3,6 +3,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 from memfuncs import MemFunc
 
+
+
+
+inputs2 = [[28.0, 114.0, 24.0, 16515.0, -1.0, 74.0],
+[34.0, 76.0, 30.0, 7129.0, 1.0, 101.0],
+[32.0, 94.0, 26.0, 9960.0, 0.0, 102.0],
+[34.0, 85.0, 27.0, 8495.0, 2.0, 94.0],
+[37.0, 69.0, 31.0, 6849.0, 1.0, 122.0],
+[28.0, 121.0, 21.0, 21105.0, 0.0, 188.0],
+[30.0, 88.0, 24.0, 8921.0, -1.0, 74.0]]
+
+
+
+
+
+
 Car_ID = 0
 Risk = 1
 Value_Loss = 2
@@ -45,11 +61,11 @@ def main():
 
 
 
-    #iterator = car_data[np.random.randint(car_data.shape[0], size=20), :]
-    iterator = car_data
+    iterator = car_data[np.random.randint(car_data.shape[0], size=100), :]
+    #iterator = car_data
 
-    for data in iterator:
-        inputs = convertCarData(data)
+    for inputs in inputs2:
+        #inputs = convertCarData(data)
         #change the inputs for each of the cars in the tree
         aTree.changeInputs(inputs)
         nTree.changeInputs(inputs)
@@ -75,6 +91,13 @@ def main():
         l3 = plt.axvline(nScore,c='g',linewidth=2.0,label="Crisp")
 
         plt.legend(handles=[l1,l2,l3])
+        plt.title("Regular Title")
+        plt.xlabel("Output Score")
+        plt.ylabel("Membership Value")
+
+        #Batch Save Rember to remove input
+        #plt.savefig("test.png")
+
 
         plt.show()
         t = input()

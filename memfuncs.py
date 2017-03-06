@@ -53,35 +53,44 @@ class MemFunc():
         if(len(self.specs) < 4):
             raise Exception("Not enough specs passed in for the Trapezoid membership function")
 
-        specs = self.specs
+        a = self.specs[0]
+        b = self.specs[1]
+        c = self.specs[2]
+        d = self.specs[3]
 
-        #used to check for the case where ba or dc are the same causing
-        # a divide by zero error when computing the  function
-        ba = (specs[1] - specs[0])
-        dc = (specs[3] - specs[2])
+        if input >= b and input <= c:
+            return 1
+        elif a != b and input > a and input < b:
+            return (c - input) / float(c - b)
 
-        if(ba == 0):
-            ba = 1
-        elif(dc == 0):
-            dc = 1
+        elif c != d and input > c and input < d:
+            return (c - input) / float(c - b)
+        else:
+            return 0
 
-        return max(min( (input-specs[0]) / ba, 1 ,(specs[3] - input)/dc ),0)
+
+
 
     def tri(self, input):
 
         if(len(self.specs) < 3):
             raise Exception("Not enough specs passed in for the Triangle membership function")
 
-        specs = self.specs
 
-        #used to check for the case where b a are the same causing
-        # a divide by zero error when computing the  function
-        ba = (specs[1] - specs[0])
+        a = self.specs[0]
+        b = self.specs[1]
+        c = self.specs[2]
 
-        if ba == 0:
-            ba = 1
 
-        specs = self.specs
-        return max(min( (input-specs[0]) / ba , (specs[2] - input)/(specs[2] - specs[1]) ),0)
+        if input == b:
+            return 1
+        elif a != b and input > a and input < b:
+            return (c - input) / float(c - b)
+
+        elif b != c and input > b and input < c:
+            return (c - input) / float(c - b)
+        else:
+            return 0
+
 
 
