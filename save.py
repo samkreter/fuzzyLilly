@@ -2,32 +2,47 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from extention import ExtentionOps
 from memfuncs import MemFunc
+import numpy as np
 
-df = pd.read_csv("fmemFile.csv")
+df = pd.read_csv("tfmem.csv")
 
 #print(df.head())
 
 
+p = ["City MPG - Poor", "Highway MPG - Good", "Horsepower - Average",
+     "Risk - Low", "Value Loss - Low", "Price - Cheap"]
+
+c = ['b','g','k','r','c','m']
 
 e = ExtentionOps("add")
 #e.convertToDomain()
 
+X = np.arange(0,1.1, .05)
 
+count = 0
 for row in df.itertuples():
     A = e.convertToDomain([row[2],row[3],row[3],row[4]])
-    print(A)
-    plt.plot(A[:,0],A[:,1],c='g',linewidth=2)
-    plt.show()
-    t = input()
+    #plt.plot(A[:,0],A[:,1],c='b',linewidth=2)
+
+    m1 = MemFunc("trap",[row[2],row[3],row[3],row[4]])
+    plt.plot(X,[m1.memFunc(i) for i in X ],c=c[count],linewidth=2)
+
+    plt.xlim([0,1])
+    plt.ylim([0,1])
+
+    plt.title(p[count])
+    plt.savefig("img/start-" + str(count) + ".png")
+    plt.clf()
+    # plt.show()
+    # t = input()
+    if count > 4:
+        break
+    count += 1
 
 
-X = np.arange(0,1.1,.1)
 
-for row in df.itertuples():
-    m1 = MemFunc("tri",row[2],row[3],row[4])
-    plt.plot(X,[m1.memFunc(i) for i in X ],c='g')
-    plt.show()
-    t = input()
+
+
 
 
 #

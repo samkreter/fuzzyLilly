@@ -104,9 +104,9 @@ def main():
         #get the score for that car
 
         aScore = aTree.run()
-        # nScore = nTree.run()
-        # eScore = eTree.run()
-        continue
+        nScore = nTree.run()
+        eScore = eTree.run()
+
         print("Inputs:",inputs)
         print("ASCORE #######:",aScore)
         print("NSCORE #######:",nScore)
@@ -130,8 +130,8 @@ def main():
         #plt.savefig("test.png")
 
 
-        #plt.show()
-        #t = input()
+        plt.show()
+        t = input()
 
 
 
