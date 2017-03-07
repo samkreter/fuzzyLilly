@@ -1,5 +1,6 @@
 import numpy as np
-
+import matplotlib.pyplot as plt
+from file import File
 
 fsize = 10
 
@@ -36,6 +37,9 @@ class MemFunc():
         #print("input: ",input, "specs: ",self.specs,"out:",b)
         #print("Fmem:",[a,b,c])
         #Convert it to a fuzzy number
+
+        File("fmemFile.csv").writeA(["fmem",a,b,c],"a")
+
         return [a, b, b, c]
 
 

@@ -2,11 +2,13 @@ from tree import DecisionTree
 import numpy as np
 import matplotlib.pyplot as plt
 from memfuncs import MemFunc
+from file import File
 
 
 
 
-inputs2 = [[28.0, 114.0, 24.0, 16515.0, -1.0, 74.0],
+inputs2 = [[37, 82, 32, 7126, 0, 102],
+[28.0, 114.0, 24.0, 16515.0, -1.0, 74.0],
 [34.0, 76.0, 30.0, 7129.0, 1.0, 101.0],
 [32.0, 94.0, 26.0, 9960.0, 0.0, 102.0],
 [34.0, 85.0, 27.0, 8495.0, 2.0, 94.0],
@@ -51,6 +53,9 @@ def printInputs():
 
 
 def main():
+
+    fmemFile = File("fmemFile.csv")
+
     #import the data from a csv
     car_data = np.genfromtxt('car_data.csv', delimiter=',')
 
@@ -61,19 +66,24 @@ def main():
 
 
 
-    iterator = car_data[np.random.randint(car_data.shape[0], size=100), :]
+    #iterator = car_data[np.random.randint(car_data.shape[0], size=100), :]
     #iterator = car_data
+    iterator = inputs2
 
-    for inputs in inputs2:
+    for inputs in iterator:
         #inputs = convertCarData(data)
         #change the inputs for each of the cars in the tree
         aTree.changeInputs(inputs)
         nTree.changeInputs(inputs)
         eTree.changeInputs(inputs)
 
+
         #get the score for that car
+        fmemFile.writeA(["Done","Alpha",0,0])
         aScore = aTree.run()
+
         nScore = nTree.run()
+        fmemFile.writeA(["Done","Extend",0,0])
         eScore = eTree.run()
 
         print("Inputs:",inputs)
