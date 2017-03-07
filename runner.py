@@ -1,6 +1,7 @@
 from tree import DecisionTree
 import numpy as np
 import matplotlib.pyplot as plt
+from pprint import pprint
 
 
 #Just easier to see the parts of the data
@@ -14,7 +15,7 @@ Price = 6
 
 
 #Used to name files for printing out the graphs
-testName = "alpha"
+testName = "ZadehBaseTree"
 wValue = "-w2"
 
 
@@ -44,12 +45,13 @@ def main():
     scores = []
     #track the best score and data
     best = [0,0]
+    test = []
 
 
     for data in car_data:
 
         #change the inputs for each of the cars in the tree
-        dTree.changeInputs(convertCarData2(data))
+        dTree.changeInputs(convertCarData(data))
         #get the score for that car
         score = dTree.run()
 
@@ -60,10 +62,14 @@ def main():
         	best[1] = data
         #add it to the list of scores
         scores.append(score)
-        print(score)
+        test.append([score,data.tolist()])
 
 
-    print("best",best[0],best[1])
+    #print("best",best[0],best[1])
+
+    test = sorted(test,key=lambda x: x[0],reverse=True)
+
+    pprint(test[0:3])
 
     #create a normilized histagram of the scores
     n, bins, patches = plt.hist(scores, normed=1, facecolor='green', alpha=0.75)

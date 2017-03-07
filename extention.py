@@ -37,7 +37,7 @@ class ExtentionOps:
         mem1 = MemFunc("trap",A)
         newA = []
 
-        for i in np.arange(0,1,.05):
+        for i in np.arange(0,1.05,.05):
 
             try:
                 newA.append([i,self.round2(mem1.memFunc(i))])

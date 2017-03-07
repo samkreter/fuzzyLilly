@@ -38,7 +38,7 @@ class MemFunc():
         #print("Fmem:",[a,b,c])
         #Convert it to a fuzzy number
 
-        File("fmemFile.csv").writeA(["fmem",a,b,c],"a")
+        File("fmemFile.csv").writeA([self.memFuncName,a,b,c],"a")
 
         return [a, b, b, c]
 

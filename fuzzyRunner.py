@@ -6,16 +6,34 @@ from file import File
 
 
 
-
-inputs2 = [[37, 82, 32, 7126, 0, 102],
-[28.0, 114.0, 24.0, 16515.0, -1.0, 74.0],
-[34.0, 76.0, 30.0, 7129.0, 1.0, 101.0],
-[32.0, 94.0, 26.0, 9960.0, 0.0, 102.0],
+inputs2 = [
+[25.0, 82.0, 24.0, 9233.0, 0.0, 102.0],
+[33.0, 86.0, 27.0, 7895.0, 0.0, 106.0],
 [34.0, 85.0, 27.0, 8495.0, 2.0, 94.0],
-[37.0, 69.0, 31.0, 6849.0, 1.0, 122.0],
+[32.0, 94.0, 26.0, 9960.0, 0.0, 102.0],
 [28.0, 121.0, 21.0, 21105.0, 0.0, 188.0],
-[30.0, 88.0, 24.0, 8921.0, -1.0, 74.0]]
+]
 
+
+#Trash
+#[37, 82, 32, 7126, 0, 102],
+#[34.0, 76.0, 30.0, 7129.0, 1.0, 101.0],
+#[37.0, 69.0, 31.0, 6849.0, 1.0, 122.0],
+#[28.0, 114.0, 24.0, 16515.0, -1.0, 74.0],
+#[32.0, 84.0, 26.0, 11245.0, 0.0, 115.0],
+#[30.0, 88.0, 24.0, 8921.0, -1.0, 74.0],
+
+#.1
+# [32.0, 100.0, 26.0, 9995.0, 2.0, 94.0]
+# [33.0, 82.0, 28.0, 7775.0, 0.0, 102.0]
+# [32.0, 84.0, 26.0, 8495.0, 0.0, 115.0]
+
+#.2
+# [32.0, 84.0, 26.0, 11245.0, 0.0, 115.0]
+# [33.0, 86.0, 27.0, 7895.0, 0.0, 106.0]
+# [25.0, 82.0, 24.0, 9233.0, 0.0, 102.0]
+
+#5,7
 
 
 
@@ -71,21 +89,24 @@ def main():
     iterator = inputs2
 
     for inputs in iterator:
-        #inputs = convertCarData(data)
+
+
+
         #change the inputs for each of the cars in the tree
+
+
+        #inputs = convertCarData(inputs)
         aTree.changeInputs(inputs)
         nTree.changeInputs(inputs)
         eTree.changeInputs(inputs)
 
 
         #get the score for that car
-        fmemFile.writeA(["Done","Alpha",0,0])
+
         aScore = aTree.run()
-
-        nScore = nTree.run()
-        fmemFile.writeA(["Done","Extend",0,0])
-        eScore = eTree.run()
-
+        # nScore = nTree.run()
+        # eScore = eTree.run()
+        continue
         print("Inputs:",inputs)
         print("ASCORE #######:",aScore)
         print("NSCORE #######:",nScore)
@@ -109,8 +130,8 @@ def main():
         #plt.savefig("test.png")
 
 
-        plt.show()
-        t = input()
+        #plt.show()
+        #t = input()
 
 
 
