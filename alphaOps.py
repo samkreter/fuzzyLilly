@@ -8,6 +8,7 @@ class AlphaOps:
 
     def __init__(self,op):
 
+        self.opName = op
         self.op = getattr(self,op)
             #raise ValueError("Do not have that operator in AlphaOps")
 
@@ -64,7 +65,8 @@ class AlphaOps:
         fNum1 = params[0]
 
 
-        #List of points collected
+
+
         points = []
 
 
@@ -77,7 +79,6 @@ class AlphaOps:
 
 
             fNum1 = [points[0][0],points[3][0],points[3][1],points[0][1]]
-
 
             return fNum1
 

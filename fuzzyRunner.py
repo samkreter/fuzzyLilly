@@ -131,7 +131,7 @@ def main():
 
 
         plt.show()
-        t = input()
+        break
 
 
 

@@ -9,8 +9,11 @@ df = pd.read_csv("tfmem.csv")
 #print(df.head())
 
 
-p = ["City MPG - Poor", "Highway MPG - Good", "Horsepower - Average",
-     "Risk - Low", "Value Loss - Low", "Price - Cheap"]
+# p = ["City MPG - Poor", "Highway MPG - Good", "Horsepower - Average",
+#      "Risk - Low", "Value Loss - Low", "Price - Cheap"]
+
+p = ["HighwayMPG-Good","Horsepower-Average","CityMPG-Poor","Price-cheap","Risk-Low","ValueLoss-Low","HighwayMPG-Good","Horsepower-Average","CityMPG-Poor","Price-cheap","Risk-Low","ValueLoss-Low"]
+
 
 c = ['b','g','k','r','c','m']
 
@@ -19,12 +22,15 @@ e = ExtentionOps("add")
 
 X = np.arange(0,1.1, .05)
 
+rows = [[0, 0, 0.2],[0.35, 0.55, 0.75],[0.4, 0.6, 0.8],[0.0557, 0.25567, 0.4557],[0, 0, 0.2],[0.7, 0.9, 1],[0, 0, 0.2],[0.35, 0.55, 0.75],[0.4, 0.6, 0.8]]
+
+
 count = 0
-for row in df.itertuples():
-    A = e.convertToDomain([row[2],row[3],row[3],row[4]])
+for row in rows:
+    A = e.convertToDomain([row[0],row[1],row[1],row[2]])
     #plt.plot(A[:,0],A[:,1],c='b',linewidth=2)
 
-    m1 = MemFunc("trap",[row[2],row[3],row[3],row[4]])
+    m1 = MemFunc("trap",[row[0],row[1],row[1],row[2]])
     plt.plot(X,[m1.memFunc(i) for i in X ],c=c[count],linewidth=2)
 
     plt.xlim([0,1])
@@ -33,6 +39,7 @@ for row in df.itertuples():
     plt.title(p[count])
     plt.savefig("img/start-" + str(count) + ".png")
     plt.clf()
+
     # plt.show()
     # t = input()
     if count > 4:

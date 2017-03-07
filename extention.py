@@ -1,6 +1,7 @@
 from memfuncs import MemFunc
 import matplotlib.pyplot as plt
 import numpy as np
+from file import File
 
 w = 2
 INC = .1
@@ -17,6 +18,7 @@ class ExtentionOps:
                   'min':min,
                   'pow':pow}
 
+        self.opName = op
         #Weird worka round for the complemnt
         if op == "comp":
             self.func = self.comp
@@ -39,36 +41,34 @@ class ExtentionOps:
 
         for i in np.arange(0,1.05,.05):
 
-            try:
-                newA.append([i,self.round2(mem1.memFunc(i))])
-            except OverflowError:
-                print(i)
-                exit()
+            newA.append([i,self.round2(mem1.memFunc(i))])
 
-        return np.array(newA)
+
+        return newA
 
 
     def round2(self,val):
         val = int(val * 100)
+        return (val / 100)
 
-        return val / 100
 
+    def round_to_05(self,n):
+        correction = 0.5 if n >= 0 else -0.5
+        return int( n/.05+correction ) * .05
 
 
     def comp(self,A):
+        A = A[0]
         if len(A) == 4:
             A = self.convertToDomain(A)
 
-
         out = [[],[]]
         for a in A:
-            z = self.round2(1 - a[0])
+            z = self.round_to_05(self.round2(1.0 - a[0]))
             f = a[1]
 
             try:
-
                 index = out[0].index(z)
-
                 out[1][index] = max(out[1][index],f)
             except ValueError:
                 out[0].append(z)
@@ -79,25 +79,27 @@ class ExtentionOps:
 
         out.sort(key=lambda x:x[0])
 
-        # out = list(zip(*out))
+        out1 = list(zip(*out))
 
-
-
+        A = np.array(A)
         #[i[0] for i in sorted(enumerate(myList), key=lambda x:x[1])]
+        plt.title("Compliment")
+        plt.plot(out1[0],out1[1],c='y',linewidth=2)
+        plt.plot(A[:,0],A[:,1],c='k',linewidth=2)
+        plt.xlim([0,1])
+        plt.ylim([0,1])
+        plt.show()
 
-        # plt.plot(out[0],out[1],c='r')
-        # plt.plot(A[:,0],A[:,1],c='g')
-        # plt.show()
+        print(out)
+
         return out
 
     def extention(self, params):
 
 
         A = params[0]
-
         for i in range(1,len(params)):
             B = params[i]
-
 
             #Convert a membership function to the right domain the first time
             if len(A) == 4:
@@ -105,6 +107,8 @@ class ExtentionOps:
             if len(B) == 4:
                 B = self.convertToDomain(B)
 
+            # print("A:",A)
+            # print("B:",B)
 
 
             out = [[],[]]
@@ -135,20 +139,22 @@ class ExtentionOps:
             out.sort(key=lambda x:x[0])
 
 
+            B = np.array(B)
+            A = np.array(A)
+
+            out1 = np.array(list(zip(*out)))
+            plt.plot(A[:,0],A[:,1],c='b',linewidth=2)
+            plt.plot(B[:,0],B[:,1],c='g',linewidth=2)
+            plt.plot(out1[0],out1[1],c='y',linewidth=2)
+            plt.xlim([0,1])
+            plt.ylim([0,1])
+            plt.title(self.opName)
+            plt.show()
+
+            A = out
 
 
-            fNum1 = out
-
-
-            # out = np.array(list(zip(*out)))
-            # plt.plot(out[0],out[1],c='r')
-            # plt.plot(A[:,0],A[:,1],c='g')
-            # plt.plot(B[:,0],B[:,1],c='b')
-            # plt.xlim([0,2])
-            # plt.ylim([0,1])
-            # plt.show()
-
-        return fNum1
+        return A
 
 
 
