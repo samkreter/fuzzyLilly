@@ -39,13 +39,18 @@ class ExtentionOps:
 
         for i in np.arange(0,1,.05):
 
-            newA.append([i,self.round2(mem1.memFunc(i))])
+            try:
+                newA.append([i,self.round2(mem1.memFunc(i))])
+            except OverflowError:
+                print(i)
+                exit()
 
         return np.array(newA)
 
 
     def round2(self,val):
         val = int(val * 100)
+
         return val / 100
 
 
@@ -129,53 +134,53 @@ class ExtentionOps:
 
             out.sort(key=lambda x:x[0])
 
-            # out = np.array(list(zip(*out)))
+
 
 
             fNum1 = out
 
-            #[i[0] for i in sorted(enumerate(myList), key=lambda x:x[1])]
 
-            plt.plot(out[0],out[1],c='r')
-            plt.plot(A[:,0],A[:,1],c='g')
-            plt.plot(B[:,0],B[:,1],c='b')
-            plt.xlim([0,2])
-            plt.ylim([0,1])
-            plt.show()
+            # out = np.array(list(zip(*out)))
+            # plt.plot(out[0],out[1],c='r')
+            # plt.plot(A[:,0],A[:,1],c='g')
+            # plt.plot(B[:,0],B[:,1],c='b')
+            # plt.xlim([0,2])
+            # plt.ylim([0,1])
+            # plt.show()
 
         return fNum1
 
 
 
 
-e = ExtentionOps("add")
-mem1 = MemFunc('trap',[.2,.2,.3,.4])
-mem2 = MemFunc('tri',[.4,.6,.8])
-#mem2 = lambda x: 1 if x == 1 else 0
+# e = ExtentionOps("add")
+# mem1 = MemFunc('tri',[.2,.2,.4])
+# mem2 = MemFunc('tri',[.4,.6,.8])
+# #mem2 = lambda x: 1 if x == 1 else 0
 
 
 
-A = []
-B = []
+# A = []
+# B = []
 
-for i in np.arange(0,1,.05):
+# for i in np.arange(0,1,.05):
 
-    A.append([i,e.round2(mem1.memFunc(i))])
+#     A.append([i,e.round2(mem1.memFunc(i))])
 
-    B.append([i,e.round2(mem2.memFunc(i))])
+#     B.append([i,e.round2(mem2.memFunc(i))])
 
-A = np.array(A)
-B = np.array(B)
+# A = np.array(A)
+# B = np.array(B)
 
 
-print(A)
-#A = [.2,.4,.4,.6]
-# B = [.4,.6,.6,.8]
 
-print("########")
-p = e.comp(A)
-t = e.extention([A,B])
-print(e.extention([p,t]))
+# #A = [.2,.4,.4,.6]
+# # B = [.4,.6,.6,.8]
+
+# print("########")
+# #p = e.comp(A)
+# t = e.extention([A,B])
+# #print(e.extention([p,t]))
 
 
 

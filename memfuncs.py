@@ -58,34 +58,40 @@ class MemFunc():
         c = self.specs[2]
         d = self.specs[3]
 
-        if input >= b and input <= c:
-            return 1
-        elif a != b and input > a and input < b:
-            return (c - input) / float(c - b)
 
-        elif c != d and input > c and input < d:
-            return (c - input) / float(c - b)
+
+        if input <= b:
+            return self.tri(input, vals=[a, b, b])
+        elif input >= c:
+            return self.tri(input,vals=[c, c, d])
         else:
             return 0
 
 
 
 
-    def tri(self, input):
+
+
+    def tri(self, input, vals = False):
 
         if(len(self.specs) < 3):
             raise Exception("Not enough specs passed in for the Triangle membership function")
 
 
-        a = self.specs[0]
-        b = self.specs[1]
-        c = self.specs[2]
+        if vals:
+            a = vals[0]
+            b = vals[1]
+            c = vals[2]
+        else:
+            a = self.specs[0]
+            b = self.specs[1]
+            c = self.specs[2]
 
 
         if input == b:
             return 1
         elif a != b and input > a and input < b:
-            return (c - input) / float(c - b)
+            return (input - a) / float(b - a)
 
         elif b != c and input > b and input < c:
             return (c - input) / float(c - b)
